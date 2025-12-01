@@ -2,7 +2,7 @@
 
 # PresenFace: Face Recognition Image Classification System
 
-![Project Banner](<img width="676" height="310" alt="image" src="https://github.com/user-attachments/assets/f7948132-99b1-47f9-b912-d9cf11f9e858" />)
+![Project Banner](banner.png)
 
 A comprehensive end-to-end face recognition system powered by deep learning, featuring real-time webcam classification, drag-and-drop image upload, and seamless cloud deployment.
 
