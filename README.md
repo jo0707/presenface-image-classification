@@ -18,12 +18,12 @@ A comprehensive end-to-end face recognition system powered by deep learning, fea
 
 ## Table of Contents
 
-- [Project Overview](#project-overview)
-- [AI Pipeline System](#ai-pipeline-system)
-- [Backend Deployment to Hugging Face](#backend-deployment-to-hugging-face)
-- [Frontend Deployment to Vercel](#frontend-deployment-to-vercel)
-- [Local Development](#local-development)
-- [Team](#team)
+-   [Project Overview](#project-overview)
+-   [AI Pipeline System](#ai-pipeline-system)
+-   [Backend Deployment to Hugging Face](#backend-deployment-to-hugging-face)
+-   [Frontend Deployment to Vercel](#frontend-deployment-to-vercel)
+-   [Local Development](#local-development)
+-   [Team](#team)
 
 ---
 
@@ -33,11 +33,11 @@ PresenFace is a production-ready face recognition system combining a fine-tuned 
 
 ### Key Features
 
-- Real-time webcam recognition with continuous classification
-- Drag-and-drop image upload interface
-- Top-5 predictions with confidence scores
-- Runtime server URL configuration
-- Advanced face alignment using InsightFace landmarks
+-   Real-time webcam recognition with continuous classification
+-   Drag-and-drop image upload interface
+-   Top-5 predictions with confidence scores
+-   Runtime server URL configuration
+-   Advanced face alignment using InsightFace landmarks
 
 ---
 
@@ -45,10 +45,10 @@ PresenFace is a production-ready face recognition system combining a fine-tuned 
 
 ### Model Architecture
 
-- **Base Model**: InceptionResnetV1 (FaceNet) pretrained on VGGFace2
-- **Input**: 224x224 RGB images
-- **Output**: Softmax probability distribution across face classes
-- **Regularization**: Dropout (0.5) + Weight Decay (5e-4)
+-   **Base Model**: InceptionResnetV1 (FaceNet) pretrained on VGGFace2
+-   **Input**: 224x224 RGB images
+-   **Output**: Softmax probability distribution across face classes
+-   **Regularization**: Dropout (0.5) + Weight Decay (5e-4)
 
 ### Data Processing Pipeline
 
@@ -57,11 +57,13 @@ Raw Image → Face Detection → Landmark Detection → Face Alignment → Norma
 ```
 
 **Face Detection & Alignment:**
-- InsightFace (Buffalo_L model) for face detection
-- Custom similarity transformation for face alignment
-- Standardized 224x224 face crops
+
+-   InsightFace (Buffalo_L model) for face detection
+-   Custom similarity transformation for face alignment
+-   Standardized 224x224 face crops
 
 **Training Configuration:**
+
 ```python
 batch_size: 16
 epochs: 40
@@ -79,6 +81,7 @@ loss: Cross-Entropy
 **URL**: `https://afenmarbun-backend-deep-learning.hf.space/predict`
 
 **Request:**
+
 ```http
 POST /predict
 Content-Type: multipart/form-data
@@ -86,46 +89,49 @@ Body: file (image)
 ```
 
 **Response:**
+
 ```json
 {
-  "predictions": [
-    {
-      "rank": 1,
-      "class": "Person Name",
-      "confidence": 0.9523,
-      "confidence_percent": "95.23%"
-    }
-  ]
+    "predictions": [
+        {
+            "rank": 1,
+            "class": "Person Name",
+            "confidence": 0.9523,
+            "confidence_percent": "95.23%"
+        }
+    ]
 }
 ```
 
 ### Deployment Steps
 
 1. **Create Hugging Face Space**
-   - Go to [Hugging Face Spaces](https://huggingface.co/spaces)
-   - Create new Space with Docker or Gradio SDK
-   - Choose CPU Basic hardware
+
+    - Go to [Hugging Face Spaces](https://huggingface.co/spaces)
+    - Create new Space with Docker or Gradio SDK
+    - Choose CPU Basic hardware
 
 2. **Upload Files**
-   ```bash
-   git clone https://huggingface.co/spaces/USERNAME/SPACE_NAME
-   cd SPACE_NAME
-   
-   # Copy files
-   copy ..\backend\app.py .
-   copy ..\backend\best_model.pth .
-   copy ..\backend\class_names.json .
-   copy ..\backend\requirements.txt .
-   
-   # Push to deploy
-   git add .
-   git commit -m "Deploy backend"
-   git push
-   ```
+
+    ```bash
+    git clone https://huggingface.co/spaces/USERNAME/SPACE_NAME
+    cd SPACE_NAME
+
+    # Copy files
+    copy ..\backend\app.py .
+    copy ..\backend\best_model.pth .
+    copy ..\backend\class_names.json .
+    copy ..\backend\requirements.txt .
+
+    # Push to deploy
+    git add .
+    git commit -m "Deploy backend"
+    git push
+    ```
 
 3. **Wait for Build**
-   - Monitor build logs in Space interface
-   - Test endpoint when status shows "Running"
+    - Monitor build logs in Space interface
+    - Test endpoint when status shows "Running"
 
 ---
 
@@ -150,27 +156,29 @@ vercel --prod
 #### Option 2: Deploy via GitHub (Recommended)
 
 1. **Push to GitHub**
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git push -u origin main
-   ```
+
+    ```bash
+    git init
+    git add .
+    git commit -m "Initial commit"
+    git push -u origin main
+    ```
 
 2. **Connect to Vercel**
-   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
-   - Click "New Project"
-   - Import your GitHub repository
-   - Configure:
-     - Framework: Next.js
-     - Root Directory: `frontend`
-   - Add environment variable:
-     - `NEXT_PUBLIC_DEFAULT_SERVER_URL`: Your Hugging Face Space URL
-   - Click "Deploy"
+
+    - Go to [Vercel Dashboard](https://vercel.com/dashboard)
+    - Click "New Project"
+    - Import your GitHub repository
+    - Configure:
+        - Framework: Next.js
+        - Root Directory: `frontend`
+    - Add environment variable:
+        - `NEXT_PUBLIC_DEFAULT_SERVER_URL`: Your Hugging Face Space URL
+    - Click "Deploy"
 
 3. **Auto Deployment**
-   - Vercel automatically deploys on every push to main branch
-   - Preview deployments for pull requests
+    - Vercel automatically deploys on every push to main branch
+    - Preview deployments for pull requests
 
 ---
 
@@ -209,11 +217,11 @@ npm run dev                     # Runs on http://localhost:9002
 
 This project was developed as part of the Deep Learning course assignment.
 
-| Name | Student ID | Role |
-|------|-----------|------|
-| Joshua Palti Sinaga | 122140141 | AI Pipeline & Model Training |
-| Alfajar | 122140122 | Backend Development & Deployment |
-| Rustian Afencius Marbun | 122140155 | Frontend Development & UI/UX |
+| Name                    | Student ID | Role                             |
+| ----------------------- | ---------- | -------------------------------- |
+| Joshua Palti Sinaga     | 122140141  | AI Pipeline & Model Training     |
+| Alfajar                 | 122140122  | Backend Development & Deployment |
+| Rustian Afencius Marbun | 122140155  | Frontend Development & UI/UX     |
 
 ---
 
